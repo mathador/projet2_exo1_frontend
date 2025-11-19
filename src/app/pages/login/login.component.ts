@@ -5,6 +5,7 @@ import { MaterialModule } from '../../shared/material.module';
 import { UserService } from '../../core/service/user.service';
 import { Login } from '../../core/models/Login';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
     private readonly userService = inject(UserService);
     private readonly formBuilder = inject(FormBuilder);
     private readonly destroyRef = inject(DestroyRef);
+    private readonly router = inject(Router);
     loginForm: FormGroup = new FormGroup({});
     submitted: boolean = false;
 
@@ -42,12 +44,65 @@ export class LoginComponent implements OnInit {
         };
         this.userService.login(loginUser)
             .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe(
-                () => {
-                    alert('SUCCESS!! :-)');
-                    // TODO : router l'utilisateur vers la page de login
+            .subscribe({
+                next: (response) => {
+                    // Handle different authentication mechanisms:
+                    // 1. Token in body (e.g., { "token": "eyJ..." })
+                    // 2. Token in Authorization header (e.g., "Bearer eyJ...")
+                    // 3. Session cookie via Set-Cookie header (automatic, but we can log it)
+
+                    let token: string | null = null;
+                    let cookieReceived: boolean = false;
+
+                    // Try to extract token from body
+                    token = (response as any)?.body?.token ?? null;
+
+                    // If no body token, try Authorization header
+                    if (!token && (response as any)?.headers) {
+                        const authHeader = (response as any).headers.get('Authorization') ?? (response as any).headers.get('authorization');
+                        if (authHeader) {
+                            token = authHeader.startsWith('Bearer ') ? authHeader.substring(7) : authHeader;
+                        }
+                    }
+
+                    // Check for Set-Cookie header (cookie-based session)
+                    if ((response as any)?.headers) {
+                        const setCookieHeader = (response as any).headers.get('Set-Cookie');
+                        if (setCookieHeader) {
+                            cookieReceived = true;
+                            console.info('Session cookie received and set by browser.');
+                        }
+                    }
+
+                    // Determine authentication success
+                    if (token) {
+                        localStorage.setItem('authToken', token);
+                        alert('Connexion réussie. Token JWT stocké.');
+                        this.router.navigate(['']);
+                    } else if (cookieReceived) {
+                        alert('Connexion réussie. Session établie via cookie.');
+                        this.router.navigate(['']);
+                    } else {
+                        // Successful response but no token/cookie mechanism detected
+                        alert('Connexion réussie.');
+                        this.router.navigate(['']);
+                    }
                 },
-            );
+                error: (err) => {
+                    // err may be HttpErrorResponse
+                    if (err && (err.status === 400 || err.status === 401)) {
+                        alert('Identifiants invalides — vérifiez votre login/mot de passe.');
+                    } else if (err && err.status >= 500) {
+                        alert('Erreur serveur — réessayez plus tard.');
+                    } else {
+                        // network or unknown error
+                        console.debug(err);
+                        const msg = err?.message ?? JSON.stringify(err);
+                        alert('Erreur de connexion : ' + msg);
+                    }
+                    this.submitted = false;
+                }
+            });
     }
 
     onReset(): void {
