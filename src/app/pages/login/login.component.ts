@@ -48,34 +48,13 @@ export class LoginComponent implements OnInit {
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe({
                 next: (response) => {
-                    // // Handle different authentication mechanisms:
-                    // // 1. Token in body (e.g., { "token": "eyJ..." })
-                    // // 2. Token in Authorization header (e.g., "Bearer eyJ...")
-                    // // 3. Session cookie via Set-Cookie header (automatic, but we can log it)
-
-                    // let token: string | null = null;
-                    // let cookieReceived: boolean = false;
-
-                    // // Try to extract token from body
-                    // token = (response as any)?.body?.token ?? null;
-
-                    // // If no body token, try Authorization header
-                    // if (!token && (response as any)?.headers) {
-                    //     const authHeader = (response as any).headers.get('Authorization') ?? (response as any).headers.get('authorization');
-                    //     if (authHeader) {
-                    //         token = authHeader.startsWith('Bearer ') ? authHeader.substring(7) : authHeader;
-                    //         if (token) {
-                    //             localStorage.setItem('authToken', token);
-                    //             alert('Connexion réussie. Token JWT stocké.');
-                    //         } else {
-                    //             console.debug('Token NON extrait de l\'en-tête Authorization.');
-                    //         }
-                    //     }
-                    // }
+                    console.debug('Login réussi, statut : ' + response.status);
                     this.router.navigate(['students']);
                 },
                 error: (err) => {
                     // err may be HttpErrorResponse
+                    // On login error we attempt to clear any server-side session cookie
+                    // by calling the logout endpoint (server should expire the cookie).
                     if (err && (err.status === 400 || err.status === 401)) {
                         alert('Identifiants invalides — vérifiez votre login/mot de passe.');
                     } else if (err && err.status >= 500) {
@@ -86,6 +65,20 @@ export class LoginComponent implements OnInit {
                         const msg = err?.message ?? JSON.stringify(err);
                         alert('Erreur de connexion : ' + msg);
                     }
+
+                    // clear any client-side stored token
+                    localStorage.removeItem('authToken');
+
+                    // call logout endpoint to clear HttpOnly cookie if present
+                    this.userService.logout().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+                        next: () => {
+                            console.debug('Session cleared on server (logout).');
+                        },
+                        error: (logoutErr) => {
+                            console.debug('Erreur lors du logout de nettoyage', logoutErr);
+                        }
+                    });
+
                     this.submitted = false;
                 }
             });

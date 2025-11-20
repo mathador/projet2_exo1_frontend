@@ -19,4 +19,12 @@ export class UserService {
     // Set-Cookie from the server can create a HttpOnly session cookie.
     return this.httpClient.post<any>('/api/login', user, { observe: 'response', withCredentials: true });
   }
+
+  /**
+   * Request server to clear authentication cookie (HttpOnly). The server
+   * implementation must reply with Set-Cookie to expire the cookie.
+   */
+  logout(): Observable<Object> {
+    return this.httpClient.post('/api/logout', {}, { withCredentials: true });
+  }
 }

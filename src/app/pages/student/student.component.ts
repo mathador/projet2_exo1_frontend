@@ -76,6 +76,7 @@ export class StudentComponent implements OnInit {
           alert(`Étudiant ${action} avec succès.`);
           this.onReset();
           this.isEditMode = false;
+          this.router.navigate(['/students']);
         },
         error: (err) => {
           if (err?.status === 400) {
