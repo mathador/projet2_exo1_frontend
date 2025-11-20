@@ -1,1 +1,59 @@
-<p>students works!</p>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Liste des Étudiants</h3>
+        <button class="btn btn-primary" (click)="onCreate()">Créer un nouvel Étudiant</button>
+    </div>
+
+    @if (error) {
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    }
+
+    @if (loading) {
+    <div class="text-center">
+        <p>Chargement en cours...</p>
+    </div>
+    }
+
+    @if (!loading) {
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th style="display: none;">ID</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Niveau</th>
+                    <th>Matière</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (students.length === 0) {
+                <tr>
+                    <td colspan="6" class="text-center text-muted">Aucun étudiant trouvé.</td>
+                </tr>
+                }
+                @for (student of students; track student.id) {
+                <tr>
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.firstname }}</td>
+                    <td>{{ student.lastname }}</td>
+                    <td>{{ student.level }}</td>
+                    <td>{{ student.matter }}</td>
+                    <td>
+                        <button class="btn btn-sm btn-info me-2" (click)="onEdit(student)" title="Modifier">
+                            Modifier
+                        </button>
+                        <button class="btn btn-sm btn-danger" (click)="onDelete(student)" title="Supprimer">
+                            Supprimer
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    }
+</div>

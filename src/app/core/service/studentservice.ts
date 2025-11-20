@@ -16,4 +16,12 @@ export class StudentService {
   updateStudent(student: Student): Observable<Object> {
     return this.httpClient.put(`/api/students/${student.id}`, student);
   }
+
+  getStudents(): Observable<Student[]> {
+    return this.httpClient.get<Student[]>('/api/students');
+  }
+
+  deleteStudent(id: number): Observable<Object> {
+    return this.httpClient.delete(`/api/students/${id}`);
+  }
 }
