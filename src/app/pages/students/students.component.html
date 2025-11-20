@@ -37,18 +37,22 @@
                 }
                 @for (student of students; track student.id) {
                 <tr>
-                    <td>{{ student.id }}</td>
-                    <td>{{ student.firstname }}</td>
-                    <td>{{ student.lastname }}</td>
+                    <td style="display: none;">{{ student.id }}</td>
+                    <td>{{ student.firstName }}</td>
+                    <td>{{ student.lastName }}</td>
                     <td>{{ student.level }}</td>
                     <td>{{ student.matter }}</td>
-                    <td>
-                        <button class="btn btn-sm btn-info me-2" (click)="onEdit(student)" title="Modifier">
-                            Modifier
-                        </button>
-                        <button class="btn btn-sm btn-danger" (click)="onDelete(student)" title="Supprimer">
-                            Supprimer
-                        </button>
+                    <td class="text-end">
+                        <div class="d-flex justify-content-end gap-2 flex-wrap">
+                            <button class="btn btn-sm btn-info d-flex align-items-center gap-1" (click)="onEdit(student)" title="Modifier">
+                                <mat-icon>edit</mat-icon>
+                                <span class="d-none d-sm-inline">Modifier</span>
+                            </button>
+                            <button class="btn btn-sm btn-danger d-flex align-items-center gap-1" (click)="onDelete(student)" title="Supprimer">
+                                <mat-icon>delete</mat-icon>
+                                <span class="d-none d-sm-inline">Supprimer</span>
+                            </button>
+                        </div>
                     </td>
                 </tr>
                 }

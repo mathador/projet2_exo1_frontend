@@ -1,7 +1,7 @@
 export interface Student {
     id?: number;
-    firstname: string;
-    lastname: string;
+    firstName: string;
+    lastName: string;
     level: string;
     matter: string;
 }

@@ -35,6 +35,7 @@ export class StudentsComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.students = data;
+          console.table(data);
           this.loading = false;
         },
         error: (err) => {
@@ -55,7 +56,7 @@ export class StudentsComponent implements OnInit {
       alert('ID étudiant manquant');
       return;
     }
-    if (!confirm(`Êtes-vous sûr de vouloir supprimer ${student.firstname} ${student.lastname} ?`)) {
+    if (!confirm(`Êtes-vous sûr de vouloir supprimer ${student.firstName} ${student.lastName} ?`)) {
       return;
     }
 
@@ -63,7 +64,7 @@ export class StudentsComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: () => {
-          alert(`Étudiant ${student.firstname} ${student.lastname} supprimé avec succès.`);
+          alert(`Étudiant ${student.firstName} ${student.lastName} supprimé avec succès.`);
           this.loadStudents();
         },
         error: (err) => {

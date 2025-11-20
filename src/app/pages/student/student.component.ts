@@ -44,8 +44,8 @@ export class StudentComponent implements OnInit {
     const formValue = this.studentForm.getRawValue();
     const student: Student = {
       id: formValue.id ? Number.parseInt(formValue.id, 10) : undefined,
-      firstname: formValue.firstname,
-      lastname: formValue.lastname,
+      firstName: formValue.firstname,
+      lastName: formValue.lastname,
       level: formValue.level,
       matter: formValue.matter
     };
