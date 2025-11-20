@@ -15,6 +15,8 @@ export class UserService {
   }
 
   login(user: Login): Observable<HttpResponse<any>> {
-    return this.httpClient.post<any>('/api/login', user, { observe: 'response' });
+    // Ensure credentials (cookies) are sent/accepted by the browser so that
+    // Set-Cookie from the server can create a HttpOnly session cookie.
+    return this.httpClient.post<any>('/api/login', user, { observe: 'response', withCredentials: true });
   }
 }

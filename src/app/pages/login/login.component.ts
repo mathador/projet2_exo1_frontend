@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../shared/material.module';
 import { UserService } from '../../core/service/user.service';
+import { StudentService } from '../../core/service/studentservice';
 import { Login } from '../../core/models/Login';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
     private readonly formBuilder = inject(FormBuilder);
     private readonly destroyRef = inject(DestroyRef);
     private readonly router = inject(Router);
+
     loginForm: FormGroup = new FormGroup({});
     submitted: boolean = false;
 
@@ -65,28 +67,14 @@ export class LoginComponent implements OnInit {
                         }
                     }
 
-                    // Check for Set-Cookie header (cookie-based session)
-                    if ((response as any)?.headers) {
-                        const setCookieHeader = (response as any).headers.get('Set-Cookie');
-                        if (setCookieHeader) {
-                            cookieReceived = true;
-                            console.info('Session cookie received and set by browser.');
-                        }
-                    }
-
                     // Determine authentication success
                     if (token) {
                         localStorage.setItem('authToken', token);
                         alert('Connexion réussie. Token JWT stocké.');
-                        this.router.navigate(['']);
-                    } else if (cookieReceived) {
-                        alert('Connexion réussie. Session établie via cookie.');
-                        this.router.navigate(['']);
                     } else {
-                        // Successful response but no token/cookie mechanism detected
-                        alert('Connexion réussie.');
-                        this.router.navigate(['']);
+                        
                     }
+                    this.router.navigate(['students']);
                 },
                 error: (err) => {
                     // err may be HttpErrorResponse
