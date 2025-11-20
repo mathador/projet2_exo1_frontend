@@ -64,15 +64,13 @@ export class LoginComponent implements OnInit {
                         const authHeader = (response as any).headers.get('Authorization') ?? (response as any).headers.get('authorization');
                         if (authHeader) {
                             token = authHeader.startsWith('Bearer ') ? authHeader.substring(7) : authHeader;
+                            if (token) {
+                                localStorage.setItem('authToken', token);
+                                alert('Connexion réussie. Token JWT stocké.');
+                            } else {
+                                console.debug('Token NON extrait de l\'en-tête Authorization.');
+                            }
                         }
-                    }
-
-                    // Determine authentication success
-                    if (token) {
-                        localStorage.setItem('authToken', token);
-                        alert('Connexion réussie. Token JWT stocké.');
-                    } else {
-                        
                     }
                     this.router.navigate(['students']);
                 },
