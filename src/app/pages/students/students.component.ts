@@ -73,8 +73,9 @@ export class StudentsComponent implements OnInit {
           } else if (err?.status >= 500) {
             alert('Erreur serveur — réessayez plus tard.');
           } else {
-            alert('Erreur lors de la suppression : ' + (err?.message ?? 'Erreur inconnue'));
+            console.log('Erreur lors de la suppression : ' + (err?.message ?? 'Erreur inconnue'));
           }
+          this.loadStudents();
         }
       });
   }

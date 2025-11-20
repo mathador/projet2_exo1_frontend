@@ -5,6 +5,7 @@ import { MaterialModule } from '../../shared/material.module';
 import { Student } from '../../core/models/Student';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { StudentService } from '../../core/service/student.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-student',
@@ -17,6 +18,9 @@ export class StudentComponent implements OnInit {
   private readonly studentService = inject(StudentService);
   private readonly formBuilder = inject(FormBuilder);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+
   studentForm: FormGroup = new FormGroup({});
   submitted: boolean = false;
   isEditMode: boolean = false;
@@ -29,6 +33,16 @@ export class StudentComponent implements OnInit {
       level: ['', Validators.required],
       matter: ['', Validators.required]
     });
+
+    // Check if an ID is provided via query params for edit mode
+    this.activatedRoute.queryParams
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(params => {
+        const id = params['id'];
+        if (id) {
+          this.loadStudent(Number.parseInt(id, 10));
+        }
+      });
   }
 
   get form() {
@@ -81,15 +95,37 @@ export class StudentComponent implements OnInit {
 
   onReset(): void {
     this.submitted = false;
+    if (this.isEditMode) {
+      this.router.navigate(['/students']);
+    }
+    else {
+      this.studentForm.reset();
+      this.studentForm.get('id')?.disable();
+    } 
     this.isEditMode = false;
-    this.studentForm.reset();
-    this.studentForm.get('id')?.disable();
   }
 
   // Fonctionnalité future : charger un étudiant existant pour modification
   loadStudent(id: number): void {
-    // Implémentation à venir : récupération via userService.getStudent(id)
-    // et peuplement du formulaire avec les données
+    this.studentService.getStudent(id)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (student) => {
+          this.isEditMode = true;
+          this.studentForm.patchValue({
+            id: student.id,
+            firstname: student.firstName,
+            lastname: student.lastName,
+            level: student.level,
+            matter: student.matter
+          });
+        },
+        error: (err) => {
+          console.error('Erreur lors du chargement de l\'étudiant', err);
+          alert('Impossible de charger l\'étudiant. Vérifiez l\'ID fourni.');
+          this.isEditMode = false;
+        }
+      });
   }
 }
 
