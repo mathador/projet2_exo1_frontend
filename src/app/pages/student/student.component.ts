@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../shared/material.module';
 import { Student } from '../../core/models/Student';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { StudentService } from '../../core/service/studentservice';
+import { StudentService } from '../../core/service/student.service';
 
 @Component({
   selector: 'app-student',
