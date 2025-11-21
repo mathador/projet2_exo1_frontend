@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../shared/material.module';
 import { UserService } from '../../core/service/user.service';
+import { AuthStateService } from '../../core/service/auth-state.service';
 import { StudentService } from '../../core/service/student.service';
 import { Login } from '../../core/models/Login';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -17,9 +18,11 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
     private readonly userService = inject(UserService);
+    private readonly authStateService = inject(AuthStateService);
     private readonly formBuilder = inject(FormBuilder);
     private readonly destroyRef = inject(DestroyRef);
     private readonly router = inject(Router);
+    private readonly studentService = inject(StudentService);
 
     loginForm: FormGroup = new FormGroup({});
     submitted: boolean = false;
@@ -49,6 +52,14 @@ export class LoginComponent implements OnInit {
             .subscribe({
                 next: (response) => {
                     console.debug('Login réussi, statut : ' + response.status);
+                    // Store user info for header display
+                    const loginValue = this.loginForm.get('login')?.value;
+                    this.authStateService.setUser({
+                      login: loginValue,
+                      // Note: firstName and lastName could be fetched from server if available
+                      firstName: loginValue?.split('@')[0] || loginValue || 'User',
+                      lastName: ''
+                    });
                     this.router.navigate(['students']);
                 },
                 error: (err) => {
