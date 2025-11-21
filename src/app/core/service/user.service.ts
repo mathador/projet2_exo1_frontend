@@ -10,6 +10,8 @@ import { Login } from '../models/Login';
 export class UserService {
   constructor(private readonly httpClient: HttpClient) { }
 
+  private isAuthenticatedFlag:boolean = false;
+
   register(user: Register): Observable<Object> {
     return this.httpClient.post('/api/register', user);
   }
@@ -20,11 +22,15 @@ export class UserService {
     return this.httpClient.post<any>('/api/login', user, { observe: 'response', withCredentials: true });
   }
 
-  /**
-   * Request server to clear authentication cookie (HttpOnly). The server
-   * implementation must reply with Set-Cookie to expire the cookie.
-   */
   logout(): Observable<Object> {
     return this.httpClient.post('/api/logout', {}, { withCredentials: true });
+  }
+
+  isAuthenticated() {
+    return this.isAuthenticatedFlag;
+  }
+
+  authenticate(val:boolean) {
+    this.isAuthenticatedFlag = val;
   }
 }
