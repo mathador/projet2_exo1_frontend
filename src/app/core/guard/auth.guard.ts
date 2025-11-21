@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
         }
 
         // Otherwise perform a lightweight authenticated request to verify cookie-based session.
-        return this.studentService.getStudents().pipe(
+        return this.studentService.getStudent(1).pipe(
             map(() => true),
             catchError(() => {
                 // Not authenticated: redirect to login
