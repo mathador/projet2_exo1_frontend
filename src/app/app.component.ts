@@ -14,5 +14,5 @@ import { FooterComponent } from './shared/components/footer.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'etudiant-frontend';
+  title = 'Logiciel de gestion des étudiants';
 }

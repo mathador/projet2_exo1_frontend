@@ -5,6 +5,7 @@ import { MaterialModule } from '../../shared/material.module';
 import { UserService } from '../../core/service/user.service';
 import { Register } from '../../core/models/Register';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,8 +18,13 @@ export class RegisterComponent implements OnInit {
   private readonly userService = inject(UserService);
   private readonly formBuilder = inject(FormBuilder);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly router = inject(Router);
+
   registerForm: FormGroup = new FormGroup({});
   submitted: boolean = false;
+  hidePassword: boolean = true;
+  successMessage: string | null = null;
+  errorMessage: string | null = null;
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group(
@@ -48,16 +54,33 @@ export class RegisterComponent implements OnInit {
     };
     this.userService.register(registerUser)
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(
-        () => {
-          alert('SUCCESS!! :-)');
-          // TODO : router l'utilisateur vers la page de login
+      .subscribe({
+        next: () => {
+          this.successMessage = 'Inscription réussie ! Redirection vers la connexion...';
+          this.errorMessage = null;
+          setTimeout(() => {
+            this.registerForm.reset();
+            this.submitted = false;
+            this.router.navigate(['/login']);
+          }, 2000);
         },
-      );
+        error: (err) => {
+          this.successMessage = null;
+          if (err?.status === 409) {
+            this.errorMessage = 'Cet identifiant est déjà utilisé.';
+          } else if (err?.status >= 500) {
+            this.errorMessage = 'Erreur serveur. Veuillez réessayer plus tard.';
+          } else {
+            this.errorMessage = 'Erreur lors de l\'inscription : ' + (err?.message ?? 'Erreur inconnue');
+          }
+        }
+      });
   }
 
   onReset(): void {
     this.submitted = false;
     this.registerForm.reset();
+    this.successMessage = null;
+    this.errorMessage = null;
   }
 }

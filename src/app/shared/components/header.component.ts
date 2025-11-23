@@ -25,7 +25,15 @@ import { Router } from '@angular/router';
               </button>
             </div>
           } @else {
-            <span class="text-muted">Non connecté</span>
+            @if (router.url === '/login') {
+              <button class="btn btn-sm btn-outline-light" (click)="onRegister()">
+                S'inscrire
+              </button>
+            } @else {
+              <button class="btn btn-sm btn-outline-light" (click)="onLogin()">
+                Se connecter
+              </button>
+            }
           }
         </nav>
       </div>
@@ -57,5 +65,13 @@ export class HeaderComponent {
         this.router.navigate(['/login']);
       }
     });
+  }
+
+  onLogin(): void {
+    this.router.navigate(['/login']);
+  }
+
+  onRegister(): void {
+    this.router.navigate(['/register']);
   }
 }
