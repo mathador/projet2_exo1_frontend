@@ -14,9 +14,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent implements OnInit {
-  private userService = inject(UserService);
-  private formBuilder = inject(FormBuilder);
-  private destroyRef = inject(DestroyRef);
+  private readonly userService = inject(UserService);
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly destroyRef = inject(DestroyRef);
   registerForm: FormGroup = new FormGroup({});
   submitted: boolean = false;
 
@@ -49,11 +49,11 @@ export class RegisterComponent implements OnInit {
     this.userService.register(registerUser)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(
-      () => {
-        alert('SUCCESS!! :-)');
-        // TODO : router l'utilisateur vers la page de login
-      },
-    );
+        () => {
+          alert('SUCCESS!! :-)');
+          // TODO : router l'utilisateur vers la page de login
+        },
+      );
   }
 
   onReset(): void {

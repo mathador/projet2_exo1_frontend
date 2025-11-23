@@ -1,59 +1,17 @@
-# EtudiantFrontend
+# Première utilisation:
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.16.
-
-## Development server
-
-To start a local development server, run:
-
+lancez la commande (qui téléchargera les packages nécessaires)
 ```bash
-ng serve
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+Puis pour lancer le projet:
 ```bash
-ng generate component component-name
+npm run start
 ```
+Tip memotechnique:
+    "run start" R est avant S
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Vous deviendez pouvoir tester le fonctionnement avec cette première url:
+[http://localhost:4200/login]()
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Jest](https://jestjs.io/) test runner, use the following command:
-
-```bash
-jest
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
