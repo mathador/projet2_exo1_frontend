@@ -1,6 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
+const APP_TITLE = 'Logiciel de gestion des étudiants';
+
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -14,9 +16,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'etudiant-frontend' title`, () => {
+  it(`should have the 'Logiciel de gestion des étudiants' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('etudiant-frontend');
+    expect(app.title).toEqual(APP_TITLE);
   });
 });

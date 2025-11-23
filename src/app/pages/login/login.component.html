@@ -9,7 +9,7 @@
                 @if (submitted && form['login'].errors) {
                 <div class="invalid-feedback">
                     @if (form['login'].errors?.['required']) {
-                    <div>Login is required</div>
+                    <div>Login est requis</div>
                     }
                 </div>
                 }
@@ -22,7 +22,7 @@
                 @if (submitted && form['password'].errors) {
                 <div class="invalid-feedback">
                     @if (form['password'].errors?.['required']) {
-                    <div>Password is required</div>
+                    <div>Mot de Passe est requis</div>
                     }
                 </div>
                 }
@@ -31,7 +31,7 @@
             <div class="text-center">
                 <button class="btn btn-primary mr-1">Valider</button>
                 <button class="btn btn-secondary" type="reset" (click)="onReset()">
-                    Cancel
+                    Annuler
                 </button>
             </div>
         </form>
