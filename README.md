@@ -17,7 +17,18 @@ Vous deviendez pouvoir tester le fonctionnement avec cette première url:
 
 # Pour les tests unitaires
 
-RAS
+Voici quelques commandes de Jest à connaître :
+
+ ```bash
+ node_modules/.bin/jest --help   
+ ```
+ – vous permet d’afficher la documentation de Jest et les options possibles.
+
+```bash
+ node_modules/.bin/jest --watch  
+ `` 
+ – vous permet de “watcher” vos fichiers.
+ Use --no-watch (or --watch=false) to explicitly disable the watch mode.
 
 
 # pour les tests integrations et fonctionnels
