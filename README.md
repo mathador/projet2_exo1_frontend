@@ -20,7 +20,7 @@ Vous deviendez pouvoir tester le fonctionnement avec cette première url:
 Voici quelques commandes de Jest à connaître :
 
  ```bash
- node_modules/.bin/jest --help   
+ node_modules/.bin/jest --coverage   
  ```
  – vous permet d’afficher la documentation de Jest et les options possibles.
 
