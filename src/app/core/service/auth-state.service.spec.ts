@@ -30,7 +30,7 @@ describe('AuthStateService', () => {
     expect(service.getUser()).toBeNull();
   });
 
-  it('should emit user on user$', (done) => {
+  it('should emit user on user', (done) => {
     const user: CurrentUser = { firstName: 'John', lastName: 'Doe', login: 'john.doe' };
     service.user$.subscribe(emittedUser => {
       if (emittedUser !== null) {
@@ -41,7 +41,7 @@ describe('AuthStateService', () => {
     service.setUser(user);
   });
 
-  it('should emit null on user$ after clearUser', (done) => {
+  it('should emit null on user after clearUser', (done) => {
     const user: CurrentUser = { firstName: 'John', lastName: 'Doe', login: 'john.doe' };
     service.setUser(user);
 
