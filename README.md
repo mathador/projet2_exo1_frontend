@@ -26,9 +26,17 @@ Voici quelques commandes de Jest à connaître :
 
 ```bash
  node_modules/.bin/jest --watch  
- `` 
+```
+
  – vous permet de “watcher” vos fichiers.
  Use --no-watch (or --watch=false) to explicitly disable the watch mode.
+
+ pour le rapport de cuoverture:
+
+```bash
+ npm test
+```
+ un dossier "/coverage" sera créé avec un site statique.
 
 
 # pour les tests integrations et fonctionnels
