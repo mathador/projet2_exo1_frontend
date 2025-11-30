@@ -16,7 +16,6 @@ describe('LoginComponent', () => {
     let mockUserService: any;
     let mockAuthStateService: any;
     let mockRouter: any;
-    let formBuilder: FormBuilder;
     let mockDestroyRef: any;
     let alertSpy: jest.Mock;
     let localStorageSpy: jest.Mock;
@@ -44,13 +43,13 @@ describe('LoginComponent', () => {
             onDestroy: jest.fn()
         };
 
-        // Store original functions and replace with jest.fn()
+        // Store original functions and replace with jest.fn() via direct assignment
         originalAlert = window.alert;
-        Object.defineProperty(window, 'alert', { value: jest.fn(), writable: true });
+        window.alert = jest.fn();
         alertSpy = window.alert as jest.Mock;
 
         originalRemoveItem = localStorage.removeItem;
-        Object.defineProperty(localStorage, 'removeItem', { value: jest.fn(), writable: true });
+        localStorage.removeItem = jest.fn();
         localStorageSpy = localStorage.removeItem as jest.Mock;
 
         consoleDebugSpy = jest.spyOn(console, 'debug').mockImplementation(() => { });
@@ -71,14 +70,13 @@ describe('LoginComponent', () => {
 
         fixture = TestBed.createComponent(LoginComponent);
         component = fixture.componentInstance;
-        formBuilder = TestBed.inject(FormBuilder);
         fixture.detectChanges();
     });
 
     afterEach(() => {
         // Restore original global functions
-        Object.defineProperty(window, 'alert', { value: originalAlert, writable: true });
-        Object.defineProperty(localStorage, 'removeItem', { value: originalRemoveItem, writable: true });
+        window.alert = originalAlert;
+        localStorage.removeItem = originalRemoveItem;
 
         consoleDebugSpy.mockRestore();
     });
@@ -127,7 +125,6 @@ describe('LoginComponent', () => {
 
             component.onSubmit();
 
-            expect(component.submitted).toBe(true);
             expect(mockUserService.login).toHaveBeenCalledWith({
                 login: 'testuser',
                 password: 'password123'

@@ -13,7 +13,6 @@ describe('RegisterComponent', () => {
   let fixture: ComponentFixture<RegisterComponent>;
   let mockUserService: any;
   let mockRouter: any;
-  //let formBuilder: FormBuilder;
   let mockDestroyRef: any;
 
   beforeEach(async () => {
@@ -43,7 +42,6 @@ describe('RegisterComponent', () => {
 
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
-    //formBuilder = TestBed.inject(FormBuilder);
     fixture.detectChanges();
   });
 

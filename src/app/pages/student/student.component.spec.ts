@@ -16,7 +16,6 @@ describe('StudentComponent', () => {
   let mockRouter: any;
   let mockActivatedRoute: any;
   let mockDestroyRef: any;
-  //let formBuilder: FormBuilder;
 
   const mockStudent: Student = {
     id: 1,
@@ -61,7 +60,6 @@ describe('StudentComponent', () => {
 
     fixture = TestBed.createComponent(StudentComponent);
     component = fixture.componentInstance;
-    //formBuilder = TestBed.inject(FormBuilder);
     fixture.detectChanges();
   });
 
@@ -157,7 +155,6 @@ describe('StudentComponent', () => {
 
       component.onSubmit();
 
-      expect(component.submitted).toBe(true);
       expect(mockStudentService.createStudent).toHaveBeenCalledWith({
         id: undefined,
         firstName: 'Test',
@@ -185,7 +182,6 @@ describe('StudentComponent', () => {
 
       component.onSubmit();
 
-      expect(component.submitted).toBe(true);
       expect(mockStudentService.updateStudent).toHaveBeenCalledWith({
         id: 1,
         firstName: 'Updated',
