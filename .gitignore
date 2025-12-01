@@ -41,4 +41,14 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# nodejs
 node_modules/
+
+# Cypress
+cypress/videos/
+cypress/screenshots/    
+cypress/support/e2e.ts
+cypress/reports/
+cypress/fixtures/
+cypress/e2e/1-getting-started/
+cypress/e2e/2-advanced-examples/

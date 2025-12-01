@@ -9,13 +9,13 @@
                 <span class="text-white me-2">
                     {{ user.firstName }} {{ user.lastName }}
                 </span>
-                <button class="btn btn-sm btn-outline-light" (click)="onLogout()">
+                <button class="btn btn-sm btn-outline-light" (click)="onLogout()" data-cy="btn-logout">
                     Déconnecter
                 </button>
             </div>
             } @else {
             @if (router.url === '/login') {
-            <button class="btn btn-sm btn-outline-light" (click)="onRegister()">
+            <button class="btn btn-sm btn-outline-light" (click)="onRegister()" data-cy="btn-register">
                 S'inscrire
             </button>
             } @else {
