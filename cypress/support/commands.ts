@@ -39,3 +39,17 @@
 Cypress.Commands.add("getByDataCy", (selector, ...args) => {
     return cy.get(`[data-cy=${selector}]`, ...args)
 })
+
+Cypress.Commands.add("checkApiConnection", (selector, ...args) => {
+    cy.request({
+        method: 'GET',
+        url: Cypress.env('apiUrl') + Cypress.env('logout_api'),
+        failOnStatusCode: false
+    }).then((response) => {
+        if (response.status !== 404) {
+            cy.log("✅ web api ok");
+        } else {
+            cy.log(("❌ web api url not found: " + Cypress.env('apiUrl') + Cypress.env('logout_api')));
+        }
+    });
+})

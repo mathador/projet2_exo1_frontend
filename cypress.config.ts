@@ -6,6 +6,7 @@ export default defineConfig({
     apiUrl: "http://localhost:8080/api",
     //authToken: "your-auth-token-here"
     login_url: '/login',
+    register_url: '/register',
     logout_api: '/logout'
   },
   e2e: {

@@ -2,14 +2,14 @@
   <h5 class="card-header">Formulaire d'inscription</h5>
   <div class="card-body">
     @if (successMessage) {
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" data-cy="succes_inscription">
       {{ successMessage }}
     </div>
     }
     @if (errorMessage) {
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" data-cy="erreur_inscription">
       {{ errorMessage }}
-      <button type="button" class="btn-close" (click)="errorMessage = null"></button>
+      <button type="button" class="btn-close" (click)="errorMessage = null">❌</button>
     </div>
     }
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
@@ -17,7 +17,8 @@
         <div class="form-group col-5">
           <label>Prénom</label>
           <input type="text" formControlName="firstName" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && form['firstName'].errors }" />
+            [ngClass]="{ 'is-invalid': submitted && form['firstName'].errors }"
+            data-cy="firstName" />
           @if (submitted && form['firstName'].errors) {
           <div class="invalid-feedback">
             @if (form['firstName'].errors?.['required']) {
@@ -29,7 +30,8 @@
         <div class="form-group col-5">
           <label>Nom</label>
           <input type="text" formControlName="lastName" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && form['lastName'].errors }" />
+            [ngClass]="{ 'is-invalid': submitted && form['lastName'].errors }"
+            data-cy="lastName" />
           @if (submitted && form['lastName'].errors) {
           <div class="invalid-feedback">
             @if (form['lastName'].errors?.['required']) {
@@ -42,7 +44,8 @@
       <div class="form-group">
         <label>Login</label>
         <input type="text" formControlName="login" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && form['login'].errors }" />
+          [ngClass]="{ 'is-invalid': submitted && form['login'].errors }"
+          data-cy="login" />
         @if (submitted && form['login'].errors) {
         <div class="invalid-feedback">
           @if (form['login'].errors?.['required']) {
@@ -56,7 +59,8 @@
         <label for="password">Mot de Passe</label>
         <div class="input-group">
           <input [type]="hidePassword ? 'password' : 'text'" id="password" formControlName="password"
-            class="form-control" [ngClass]="{ 'is-invalid': submitted && form['password'].errors }" />
+            class="form-control" [ngClass]="{ 'is-invalid': submitted && form['password'].errors }"
+            data-cy="password" />
         </div>
         @if (submitted && form['password'].errors) {
         <div class="invalid-feedback" style="display: block;">
@@ -67,8 +71,8 @@
         }
       </div>
       <div class="text-center">
-        <button class="btn btn-primary mr-1">S'inscrire</button>
-        <button class="btn btn-secondary" type="reset" (click)="onReset()">
+        <button class="btn btn-primary mr-1" data-cy="btn-valider">S'inscrire</button>
+        <button class="btn btn-secondary" type="reset" (click)="onReset()" data-cy="btn-annuler">
           Annuler
         </button>
       </div>
