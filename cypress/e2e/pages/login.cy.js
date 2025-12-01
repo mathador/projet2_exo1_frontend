@@ -9,14 +9,6 @@ context('login page', () => {
     beforeEach(() => {
         //cy.log(Cypress.env('baseUrl'))
         cy.visit(Cypress.env('baseUrl') + Cypress.env('login_url'))
-        // cy.request("POST", apiUrl + "/login", {
-        //     "username": fakeEmail,
-        //     "password": fakePassword
-        // }).then((response) => {
-        //     token = response.body.token;
-        //     // Stockez le token dans la variable
-        // });
-
     })
 
     it('check input controls, errors labels and buttons', () => {

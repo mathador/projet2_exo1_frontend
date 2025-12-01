@@ -53,3 +53,13 @@ Cypress.Commands.add("checkApiConnection", (selector, ...args) => {
         }
     });
 })
+
+Cypress.Commands.add("connectWithTheUser", (selector, ...args) => {
+    cy.request("POST", Cypress.env('apiUrl') + Cypress.env('login_url'), {
+        "login": "d",
+        "password": "d"
+    }).then((response) => {
+        //token = response.body.token;
+        // Stockez le token dans la variable
+    });
+})

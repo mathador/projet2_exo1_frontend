@@ -35,7 +35,7 @@ export class StudentsComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.students = data;
-          console.table(data);
+          //console.table(data);
           this.loading = false;
         },
         error: (err) => {
