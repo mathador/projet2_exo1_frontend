@@ -27,9 +27,9 @@ Voici quelques commandes de Jest à connaître :
 ```bash
  node_modules/.bin/jest --watch  
 ```
-
  – vous permet de “watcher” vos fichiers.
  Use --no-watch (or --watch=false) to explicitly disable the watch mode.
+
 
  pour le rapport de cuoverture:
 
@@ -63,5 +63,4 @@ exemple de code
 ```javascript
 import { faker } from '@faker-js/faker'; //Vous avez besoin d’importer la librairie
 const randomName = faker.person.fullName(); //créer un nom+prénom
-console.log('Name:', randomName); //peut retourner par exemple ‘Christine Dupont’
 ```
