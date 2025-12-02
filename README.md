@@ -64,3 +64,57 @@ exemple de code
 import { faker } from '@faker-js/faker'; //Vous avez besoin d’importer la librairie
 const randomName = faker.person.fullName(); //créer un nom+prénom
 ```
+
+# couverture de code avec cypress
+
+Procédure compacte. Suppose un projet JS/TS avec bundler (Webpack, Vite, ou similaire).
+
+1. Installe l’instrumentation.
+
+```
+npm install --save-dev babel-plugin-istanbul
+```
+
+2. Active l’instrumentation dans Babel pour l’environnement “test-e2e”.
+   `babel.config.js` :
+
+```js
+module.exports = {
+  presets: ["@babel/preset-env"],
+  env: {
+    "coverage": {
+      plugins: ["istanbul"]
+    }
+  }
+}
+```
+
+3. Force le bundler à utiliser cet environnement lors du build servi à Cypress.
+   Exemple via variable :
+
+```
+BABEL_ENV=coverage npm run build
+```
+
+4. Lance Cypress en headless sur ce bundle instrumenté.
+
+```
+npx cypress run
+```
+
+5. Récupère la sortie brute de couverture (généralement `.nyc_output/out.json` ou `coverage/coverage-final.json` selon config).
+
+6. Génère le rapport.
+   Installe nyc si absent :
+
+```
+npm install --save-dev nyc
+```
+
+Puis :
+
+```
+npx nyc report --reporter=html --reporter=text-summary
+```
+
+Le rapport HTML apparaît dans `coverage/`.
