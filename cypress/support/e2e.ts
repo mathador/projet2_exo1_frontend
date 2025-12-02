@@ -15,4 +15,7 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-import '@cypress/code-coverage/support';
+// import '@cypress/code-coverage/support';
+// module.exports = (on, config) => {
+//     on('task', require('@cypress/code-coverage/task'))
+// }
