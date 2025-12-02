@@ -19,6 +19,8 @@ export default defineConfig({
 
   e2e: {
     setupNodeEvents(on, config) {
+      require('@cypress/code-coverage/task')(on, config); // Add this line
+      return config; // It's important to return the config object
       // codeCoverage(on, config);
       // return config;
       // codeCoverage(on, config);
