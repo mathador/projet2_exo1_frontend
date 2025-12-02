@@ -15,6 +15,9 @@ export default defineConfig({
     student_url: "/student",
     students_url: "/students",
     logout_api: "/logout",
+    codeCoverage: {
+      exclude: ['cypress/**/*.*'],
+    }
   },
 
   e2e: {

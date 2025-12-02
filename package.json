@@ -51,7 +51,6 @@
       "text-summary"
     ],
     "all": true,
-    "include": ["src/app/pages/**/*.js"],
-    "exclude": ["cypress/**/*.js"]
+    "include": ["src/app/pages/**/*.js"]
   }
 }

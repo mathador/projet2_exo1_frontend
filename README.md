@@ -67,6 +67,12 @@ const randomName = faker.person.fullName(); //créer un nom+prénom
 
 # couverture de code avec cypress
 
+
+Pour instrumenter le code
+```bash
+npx nyc instrument --compact=false src instrumented
+```
+
 To generate an HTML code coverage report for your Cypress tests, you'll primarily use the official `@cypress/code-coverage` plugin to collect data and the `nyc` (Istanbul) tool to create the final HTML report.
 
 The setup involves three main phases: installing and configuring the plugin, instrumenting your application code, and generating the report.
