@@ -6,20 +6,8 @@ import { environment } from '../../../environments/environment';
   selector: 'app-footer',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <footer class="bg-light text-center py-3 mt-5 border-top">
-      <div class="container-fluid">
-        <small class="text-muted">
-          Version {{ version }} — Mise à jour : {{ lastUpdate }}
-        </small>
-      </div>
-    </footer>
-  `,
-  styles: [`
-    footer {
-      margin-top: auto;
-    }
-  `]
+  templateUrl: './footer.component.html',
+  styleUrl: './footer.component.css'
 })
 export class FooterComponent {
   version = environment.appVersion || '1.0.0';

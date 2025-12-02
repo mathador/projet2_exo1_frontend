@@ -10,11 +10,12 @@
             <div class="form-group">
                 <label for="firstname">Prénom</label>
                 <input id="firstname" type="text" formControlName="firstname" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && form['firstname'].errors }" />
+                    [ngClass]="{ 'is-invalid': submitted && form['firstname'].errors }"
+                    data-cy="firstName" />
                 @if (submitted && form['firstname'].errors) {
                 <div class="invalid-feedback">
                     @if (form['firstname'].errors?.['required']) {
-                    <div>First Name is required</div>
+                    <div data-cy="firstNameError">Prénom est requis</div>
                     }
                 </div>
                 }
@@ -23,11 +24,12 @@
             <div class="form-group">
                 <label for="lastname">Nom</label>
                 <input id="lastname" type="text" formControlName="lastname" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && form['lastname'].errors }" />
+                    [ngClass]="{ 'is-invalid': submitted && form['lastname'].errors }"
+                    data-cy="lastName"/>
                 @if (submitted && form['lastname'].errors) {
                 <div class="invalid-feedback">
                     @if (form['lastname'].errors?.['required']) {
-                    <div>Last Name is required</div>
+                    <div>Nom est requis</div>
                     }
                 </div>
                 }
@@ -36,11 +38,12 @@
             <div class="form-group">
                 <label for="level">Niveau</label>
                 <input id="level" type="text" formControlName="level" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && form['level'].errors }" />
+                    [ngClass]="{ 'is-invalid': submitted && form['level'].errors }"
+                    data-cy="level" />
                 @if (submitted && form['level'].errors) {
                 <div class="invalid-feedback">
                     @if (form['level'].errors?.['required']) {
-                    <div>Level is required</div>
+                    <div>Niveau est requis</div>
                     }
                 </div>
                 }
@@ -49,22 +52,23 @@
             <div class="form-group">
                 <label for="matter">Matière</label>
                 <input id="matter" type="text" formControlName="matter" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && form['matter'].errors }" />
+                    [ngClass]="{ 'is-invalid': submitted && form['matter'].errors }"
+                    data-cy="matter" />
                 @if (submitted && form['matter'].errors) {
                 <div class="invalid-feedback">
                     @if (form['matter'].errors?.['required']) {
-                    <div>Matter is required</div>
+                    <div>Matière est requise</div>
                     }
                 </div>
                 }
             </div>
 
             <div class="text-center">
-                <button type="submit" class="btn btn-primary mr-1">
+                <button type="submit" class="btn btn-primary mr-1" data-cy="btn-submit">
                     {{ isEditMode ? 'Modifier' : 'Créer' }}
                 </button>
-                <button type="button" class="btn btn-secondary" (click)="onReset()">
-                    Cancel
+                <button type="button" class="btn btn-secondary" (click)="onReset()" data-cy="btn-cancel">
+                    Annuler
                 </button>
             </div>
         </form>

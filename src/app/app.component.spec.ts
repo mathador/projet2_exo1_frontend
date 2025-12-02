@@ -1,4 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { AppComponent } from './app.component';
 
 const APP_TITLE = 'Logiciel de gestion des étudiants';
@@ -7,6 +9,7 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
+      providers: [provideHttpClient(), provideHttpClientTesting()]
     }).compileComponents();
   });
 
@@ -16,7 +19,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'Logiciel de gestion des étudiants' title`, () => {
+  it(`should have the '${APP_TITLE}' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual(APP_TITLE);
