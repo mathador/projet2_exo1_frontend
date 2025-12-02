@@ -1,5 +1,8 @@
 import { defineConfig } from "cypress";
 
+const codeCoverage = require('@cypress/code-coverage/task');
+const webpackPreprocessor = require('@cypress/webpack-preprocessor');
+
 export default defineConfig({
   projectId: "czjm25",
   env: {
@@ -14,7 +17,26 @@ export default defineConfig({
   },
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
-  },
+      codeCoverage(on, config);
+      on(
+        'file:preprocessor',
+        webpackPreprocessor({
+          webpackOptions: {
+            module: {
+              rules: [
+                {
+                  test: /\.js$/,
+                  exclude: /node_modules/,
+                  use: {
+                    loader: 'babel-loader'
+                  }
+                }
+              ]
+            }
+          }
+        })
+      );
+      return config;
+    }
+  }
 });

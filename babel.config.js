@@ -1,8 +1,4 @@
 module.exports = {
-    presets: ["@babel/preset-env"],
-    env: {
-        "coverage": {
-            plugins: ["istanbul"]
-        }
-    }
-}
+    presets: ['@babel/preset-env'],
+    plugins: ['istanbul']
+};
