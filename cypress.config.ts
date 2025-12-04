@@ -47,8 +47,8 @@ export default defineConfig({
     // },
     setupNodeEvents(on, config) {
       // https://github.com/bahmutov/cypress-code-coverage
-      //require('@bahmutov/cypress-code-coverage/plugin')(on, config)
-      require('@cypress/code-coverage/task')(on, config)  
+      require('@bahmutov/cypress-code-coverage/plugin')(on, config)
+      //require('@cypress/code-coverage/task')(on, config)  
       return config; // It's important to return the config object
     },
   },

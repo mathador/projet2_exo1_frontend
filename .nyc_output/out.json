@@ -1,1 +1,173 @@
-{}
+{
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/app.component.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/app.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/app.config.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/app.config.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/app.routes.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/app.routes.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/shared/material.module.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/shared/material.module.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/guard/auth.guard.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/guard/auth.guard.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/interceptor/auth.interceptor.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/interceptor/auth.interceptor.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/models/Login.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/models/Login.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/models/Register.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/models/Register.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/models/Student.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/models/Student.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/service/auth-state.service.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/service/auth-state.service.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/service/student.service.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/service/student.service.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/service/user-mock.service.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/service/user-mock.service.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/service/user.service.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/core/service/user.service.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/pages/login/login.component.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/pages/login/login.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/pages/register/register.component.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/pages/register/register.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/pages/student/student.component.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/pages/student/student.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/pages/students/students.component.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/pages/students/students.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/shared/footer/footer.component.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/shared/footer/footer.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "D:/git/oc_archi/projet2/livrables/front_end1/src/app/shared/header/header.component.ts": {
+    "path": "D:/git/oc_archi/projet2/livrables/front_end1/src/app/shared/header/header.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  }
+}
