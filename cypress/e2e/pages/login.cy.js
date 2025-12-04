@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('login page', () => {
+describe('login page', () => {
 
     before(() => {
         cy.checkApiConnection();
