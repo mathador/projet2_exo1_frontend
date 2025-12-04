@@ -1,10 +1,5 @@
 {
-    "presets": [
-        "@babel/env",
-        "@babel/preset-typescript"
-    ],
     "plugins": [
-        "transform-class-properties",
         "istanbul"
     ]
 }
