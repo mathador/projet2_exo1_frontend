@@ -68,8 +68,8 @@ const randomName = faker.person.fullName(); //créer un nom+prénom
 # couverture de code avec cypress
 
 
-Pour instrumenter le code
+Pour la couverture de test e2e
 ```bash
-npx nyc instrument --compact=false src instrumented
+npm run e2e
 ```
 

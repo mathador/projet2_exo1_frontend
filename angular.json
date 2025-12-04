@@ -11,7 +11,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser-esbuild",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/etudiant-frontend",
             "index": "src/index.html",
@@ -30,10 +30,7 @@
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
-            "scripts": [],
-            "customWebpackConfig": {
-              "path": "webpack.config.cjs"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -60,7 +57,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "etudiant-frontend:build:production"
