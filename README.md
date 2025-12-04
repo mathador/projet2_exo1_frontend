@@ -68,28 +68,8 @@ const randomName = faker.person.fullName(); //créer un nom+prénom
 # couverture de code avec cypress
 
 
-Pour instrumenter le code
+Pour la couverture de test e2e
 ```bash
-npx nyc instrument --compact=false src instrumented
+npm run e2e
 ```
 
-### 📊 Generating the HTML Report
-After completing the setup:
-1.  **Run Your Tests**: Start your instrumented application and execute your tests using `npx cypress run`.
-2.  **Generate the Report**: After the tests finish, the coverage data is saved. Generate the HTML report with this command:
-    ```bash
-    npx nyc report --reporter=html
-    ```
-3.  **View the Report**: Open the generated file `coverage/index.html` in your browser to explore the interactive report, which shows coverage for statements, branches, functions, and lines.
-
-### 🚨 Troubleshooting Common Issues
-*   **No Coverage Data / `window.__coverage__` is undefined**: This almost always means your application code is not instrumented. Double-check your Babel or build tool configuration.
-*   **Report Includes Cypress Spec Files**: By default, the report might include your test files. To exclude them, add an `nyc` configuration object to your `package.json`:
-    ```json
-    {
-      "nyc": {
-        "include": ["src/**/*.js"],
-        "exclude": ["cypress/**/*.js"]
-      }
-    }
-    ```

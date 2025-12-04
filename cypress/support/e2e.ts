@@ -13,11 +13,5 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-// Import commands.js using ES2015 syntax:
+// Import custom commands using ES2015 syntax:
 import './commands'
-// https://github.com/bahmutov/cypress-code-coverage
-import '@bahmutov/cypress-code-coverage/support'
-//import '@cypress/code-coverage/support';
-// module.exports = (on, config) => {
-//     on('task', require('@cypress/code-coverage/task'))
-// }
